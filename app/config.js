@@ -16,8 +16,8 @@ requirejs.config({
 
     //加载依赖
     deps: [
-        'jquery', 'jquery.ui.touch', 'jquery.bootstrap', 'jquery.ui',
-        'ace.extra', 'ace', 'ace.elements'
+        'jquery', 'jquery.ui.touch-punch', 'jquery.bootstrap', 'jquery.ui',
+        'ace-extra', 'ace', 'ace-elements'
     ],
 
     //indexUrl: baseUrl+'/index',
@@ -26,8 +26,8 @@ requirejs.config({
 
         <!--ace:framework:start-->
         'ace': 'assets/js/ace',
-        'ace.elements': 'assets/js/ace-elements',
-        'ace.extra': 'assets/js/ace-extra',
+        'ace-elements': 'assets/js/ace-elements',
+        'ace-extra': 'assets/js/ace-extra',
         <!--ace:framework:end-->
 
         <!--ace:libs:start-->
@@ -43,7 +43,7 @@ requirejs.config({
 
         <!--jquery:plugins:start-->
         'jquery.ui': 'assets/js/jquery-ui.custom',
-        'jquery.ui.touch': 'assets/js/jquery.ui.touch-punch',
+        'jquery.ui.touch-punch': 'assets/js/jquery.ui.touch-punch',
         'jquery.bootstrap': 'assets/js/bootstrap',
         'jquery.easypiechart': 'assets/js/jquery.easypiechart',
         'jquery.sparkline': 'assets/js/jquery.sparkline',
@@ -52,14 +52,17 @@ requirejs.config({
         'jquery.flot.resize': 'assets/js/jquery.flot.resize',
         <!--jquery:plugins:end-->
 
+        'app_main': 'app/main'
+
     },
 
     shim: {
         'backbone': ['underscore', 'jquery'],
         'backbone.marionette': ['backbone'],
         'backbone.localStorage': ['backbone'],
+
         'jquery.ui': ['jquery'],
-        'jquery.ui.touch': ['jquery'],
+        'jquery.ui.touch-punch': ['jquery'],
         'jquery.bootstrap': ['jquery'],
         'jquery.easypiechart': ['jquery'],
         'jquery.sparkline': ['jquery'],
@@ -67,16 +70,18 @@ requirejs.config({
         'jquery.flot.pie': ['jquery'],
         'jquery.flot.resize': ['jquery'],
 
-        'ace.elements'          : ['jquery'],
-        'ace'                   : ['jquery', 'jquery.ui']
+        'ace': ['jquery', 'jquery.ui'],
+        'ace-elements': ['jquery'],
+
+        //'app_main': {exports:'Hello'}
     }
 });
 
 //开启App
 (function(global){
-    console.log("app start!");
+    //console.log("app start!");
 
-    /*require(['app/main'], function(App){
-        console.log("App start!");
-    });*/
+    require(['app_main'], function(App){
+
+    });
 })(this);
