@@ -3,25 +3,24 @@
  */
 
 //移动终端资源
-var mobileResConfig = {};
+/*var mobileResConfig = {};
 if('ontouchstart' in document.documentElement){
     mobileResConfig.paths['jquery'] = 'assets/js/jquery.js';
     mobileResConfig.paths['jquery.mobile'] = 'assets/js/jquery.mobile.custom';
     mobileResConfig.shim['jquery.mobile'] = ['jquery'];
-}
+}*/
 
 requirejs.config({
     //相对地址
     baseUrl: './',
 
-    //加载依赖
+    //预加载
     deps: [
         'jquery', 'jquery.ui.touch-punch', 'jquery.bootstrap', 'jquery.ui',
-        'ace-extra', 'ace', 'ace-elements'
+        'ace-extra', 'ace', 'ace-elements', 'jquery.flot'
     ],
 
-    //indexUrl: baseUrl+'/index',
-
+    //模块路径
     paths: {
 
         <!--ace:framework:start-->
@@ -47,15 +46,16 @@ requirejs.config({
         'jquery.bootstrap': 'assets/js/bootstrap',
         'jquery.easypiechart': 'assets/js/jquery.easypiechart',
         'jquery.sparkline': 'assets/js/jquery.sparkline',
-        'jquery.flot': 'assets/js/jquery.flot',
-        'jquery.flot.pie': 'assets/js/jquery.flot.pie',
-        'jquery.flot.resize': 'assets/js/jquery.flot.resize',
+        'jquery.flot': 'assets/js/flot/jquery.flot',
+        'jquery.flot.pie': 'assets/js/flot/jquery.flot.pie',
+        'jquery.flot.resize': 'assets/js/flot/jquery.flot.resize',
         <!--jquery:plugins:end-->
 
         'app_main': 'app/main'
 
     },
 
+    //配置模块加载顺序以及依赖关系
     shim: {
         'backbone': ['underscore', 'jquery'],
         'backbone.marionette': ['backbone'],
@@ -70,8 +70,8 @@ requirejs.config({
         'jquery.flot.pie': ['jquery'],
         'jquery.flot.resize': ['jquery'],
 
-        'ace': ['jquery', 'jquery.ui'],
         'ace-elements': ['jquery'],
+        'ace': ['jquery', 'jquery.ui']
 
         //'app_main': {exports:'Hello'}
     }
@@ -81,7 +81,7 @@ requirejs.config({
 (function(global){
     //console.log("app start!");
 
-    require(['app_main'], function(App){
+    /*require(['app_main'], function(App){
 
-    });
+    });*/
 })(this);
