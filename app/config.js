@@ -17,7 +17,7 @@ requirejs.config({
     //预加载
     deps: [
         'jquery', 'jquery.ui.touch-punch', 'jquery.bootstrap', 'jquery.ui',
-        'ace', 'ace-elements', 'jquery.flot'
+        'ace', 'ace-elements'
     ],
 
     //模块路径
