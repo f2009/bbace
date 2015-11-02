@@ -17,7 +17,7 @@ requirejs.config({
     //预加载
     deps: [
         'jquery', 'jquery.ui.touch-punch', 'jquery.bootstrap', 'jquery.ui',
-        'ace-extra', 'ace', 'ace-elements', 'jquery.flot'
+        'ace', 'ace-elements', 'jquery.flot'
     ],
 
     //模块路径
@@ -70,18 +70,19 @@ requirejs.config({
         'jquery.flot.pie': ['jquery'],
         'jquery.flot.resize': ['jquery'],
 
-        'ace-elements': ['jquery'],
-        'ace': ['jquery', 'jquery.ui']
+        'ace': ['jquery'],
+        'ace-elements': ['jquery', 'jquery.ui'],
 
-        //'app_main': {exports:'Hello'}
+
+        'app_main': {
+            exports:'say'
+        }
     }
 });
 
 //开启App
-(function(global){
-    //console.log("app start!");
-
-    /*require(['app_main'], function(App){
-
-    });*/
-})(this);
+(function(undefined){
+    require(['app_main'], function(App){
+        App.hello();
+    });
+})();
