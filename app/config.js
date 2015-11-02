@@ -22,6 +22,12 @@ requirejs.config({
 
     //模块路径
     paths: {
+        <!--requirejs:libs:start-->
+        'domReady': 'libs/require.domReady-2.0.1',
+        'text': 'libs/require.text-2.0.14',
+        'i18n': 'libs/require.i18n-2.0.6',
+        'cs': 'libs/require.cs-0.5.0', //CoffeeScript
+        <!--requirejs:libs:end-->
 
         <!--ace:framework:start-->
         'ace': 'assets/js/ace',
@@ -70,19 +76,16 @@ requirejs.config({
         'jquery.flot.pie': ['jquery'],
         'jquery.flot.resize': ['jquery'],
 
-        'ace': ['jquery'],
-        'ace-elements': ['jquery', 'jquery.ui'],
-
-
-        'app_main': {
-            exports:'say'
-        }
+        'ace': ['jquery', 'jquery.bootstrap'],
+        'ace-elements': ['ace', 'jquery.ui']
     }
 });
 
 //开启App
-(function(undefined){
-    require(['app_main'], function(App){
-        App.hello();
+require(['domReady'], function (domReady) {
+    domReady(function () {
+        require(['app_main'], function(App){
+            App.hello();
+        });
     });
-})();
+});
