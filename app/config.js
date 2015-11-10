@@ -22,6 +22,10 @@ requirejs.config({
 
     //模块路径
     paths: {
+        <!--thirdParty:libs:start-->
+        'json2': 'libs/json2',
+        <!--thirdParty:libs:end-->
+
         <!--requirejs:libs:start-->
         'domReady': 'libs/require.domReady-2.0.1',
         'text': 'libs/require.text-2.0.14',
