@@ -7,7 +7,7 @@ define([
 
     return {
         hello: function(){
-            alert('say hello!');
+            console.log('say hello!');
         }
     };
 
