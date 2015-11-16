@@ -24,14 +24,9 @@ requirejs.config({
     paths: {
         <!--thirdParty:libs:start-->
         'json2': 'libs/json2',
+        'jquery': 'assets/js/jquery1x',
+        'underscore': 'libs/underscore-1.8.3',
         <!--thirdParty:libs:end-->
-
-        <!--requirejs:libs:start-->
-        'domReady': 'libs/require.domReady-2.0.1',
-        'text': 'libs/require.text-2.0.14',
-        'i18n': 'libs/require.i18n-2.0.6',
-        'cs': 'libs/require.cs-0.5.0', //CoffeeScript
-        <!--requirejs:libs:end-->
 
         <!--ace:framework:start-->
         'ace': 'assets/js/ace',
@@ -39,16 +34,18 @@ requirejs.config({
         'ace-extra': 'assets/js/ace-extra',
         <!--ace:framework:end-->
 
-        <!--ace:libs:start-->
-        'jquery': 'assets/js/jquery1x',
-        'underscore': 'libs/underscore-1.8.3',
-        <!--ace:libs:end-->
-
         <!--ace:mvc:start-->
         'backbone': 'libs/backbone-1.2.1',
         'backbone.marionette': 'libs/backbone.marionette-2.4.1',
         'backbone.localStorage': 'libs/backbone.localStorage-1.1.0',
         <!--ace:mvc:end-->
+
+        <!--requirejs:plugins:start-->
+        'domReady': 'libs/require.domReady-2.0.1',
+        'text': 'libs/require.text-2.0.14',
+        'i18n': 'libs/require.i18n-2.0.6',
+        'cs': 'libs/require.cs-0.5.0', //CoffeeScript
+        <!--requirejs:plugins:end-->
 
         <!--jquery:plugins:start-->
         'jquery.ui': 'assets/js/jquery-ui.custom',

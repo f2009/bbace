@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     watchLess = require("gulp-watch-less"),
     rename = require("gulp-rename")
 	;
- 
+
 gulp.task('build-less', function () {
     gulp.src('less/*.less')
 	.pipe(watchLess('less/*.less'))
@@ -28,6 +28,6 @@ gulp.task('build-sass', function () {
 
 gulp.task('watch-changed', function(){
 	gulp.watch();
-})
+});
 
 gulp.task('default', ['build-less', 'build-sass']);
