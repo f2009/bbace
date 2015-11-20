@@ -1,5 +1,5 @@
 /**
- * Created by hefeng on 15-9-14.
+ * main
  */
 define([], function() {
 
