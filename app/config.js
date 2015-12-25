@@ -42,7 +42,7 @@ requirejs.config({
 
         <!--requirejs:plugins:start-->
         'domReady': 'libs/require.domReady-2.0.1',
-        'text': 'libs/require.text-2.0.14',
+        'tpl': 'libs/require.text-2.0.14',
         'i18n': 'libs/require.i18n-2.0.6',
         'cs': 'libs/require.cs-0.5.0', //CoffeeScript
         <!--requirejs:plugins:end-->
@@ -86,7 +86,7 @@ requirejs.config({
 require(['domReady'], function (domReady) {
     domReady(function () {
         require(['app_main'], function(App){
-            App.hello();
+            App.start();
         });
     });
 });

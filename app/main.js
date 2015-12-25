@@ -1,12 +1,19 @@
 /**
  * main
  */
-define([], function() {
+define(function(require, exports, module) {
+    var home_ctrl = require('app/home/ctrl');
 
-    return {
-        hello: function(){
-            console.log('say hello!');
-        }
+    //启动App
+    var _start = function(){
+        console.log("Start app ==================");
+
+        home_ctrl.init();
+
+        console.log("End app ==================");
     };
 
+    return {
+        start: _start
+    }
 });
