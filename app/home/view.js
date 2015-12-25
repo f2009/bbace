@@ -10,8 +10,8 @@ define([
         template: pageTpl,
         className: 'app-home-view',
         onRender: function(){
-            var NavbarView = require('app/home/navbar');
-            var SidebarView = require('app/home/sidebar');
+            /*var NavbarView = require('app/home/navbar');
+            var SidebarView = require('app/home/sidebar');*/
         }
     });
 
