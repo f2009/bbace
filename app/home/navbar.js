@@ -7,7 +7,7 @@ define([
 ], function(Marionette, navbarTpl) {
 
     return Marionette.ItemView.extend({
-        template: navbarTpl,
+        template: _.template(navbarTpl),
         className: 'app-home-navbar',
         onRender: function(){
             console.log("navbar has been rendered!");

@@ -1,8 +1,9 @@
 /**
  * main
  */
-define(function(require, exports, module) {
-    var home_ctrl = require('app/home/ctrl');
+define([
+    'app/home/ctrl'
+], function(home_ctrl) {
 
     //启动App
     var _start = function(){

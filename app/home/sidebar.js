@@ -7,7 +7,7 @@ define([
 ], function(Marionette, sidebarTpl) {
 
     return Marionette.ItemView.extend({
-        template: sidebarTpl,
+        template: _.template(sidebarTpl),
         className: 'app-home-sidebar',
         onRender: function(){
             console.log("sidebar has been rendered!");

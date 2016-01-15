@@ -82,6 +82,14 @@ requirejs.config({
     }
 });
 
+//处理IE调试信息
+var console = window.console ? window.console : {
+    log: function() {},
+    info: function() {},
+    warn: function() {},
+    error: function() {}
+};
+
 //开启App
 require(['domReady'], function (domReady) {
     domReady(function () {

@@ -3,15 +3,20 @@
  */
 define([
     'backbone.marionette',
-    'tpl!app/home/templates/homepage.tpl'
+    'tpl!app/home/templates/page.tpl'
 ], function(Marionette, pageTpl) {
 
     return Marionette.ItemView.extend({
-        template: pageTpl,
+        template: _.template(pageTpl),
         className: 'app-home-view',
+        ui: {
+            navbarContainer: '#navbar',
+            sidebarContainer: '#sidebar',
+            mainContainer: '#main',
+            footerContainer: '#footer'
+        },
         onRender: function(){
-            /*var NavbarView = require('app/home/navbar');
-            var SidebarView = require('app/home/sidebar');*/
+            $("body").prepend(this.$el);
         }
     });
 

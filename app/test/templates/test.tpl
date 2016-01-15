@@ -1,9 +1,4 @@
-<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-    <span class="sr-only"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-</button>
+
 
 <div class="navbar-header pull-left">
     <a href="javascript:void(0);" class="navbar-brand">
