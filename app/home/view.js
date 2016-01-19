@@ -8,7 +8,7 @@ define([
 
     return Marionette.ItemView.extend({
         template: _.template(pageTpl),
-        className: 'app-home-view',
+        className: 'app-home',
         ui: {
             navbarContainer: '#navbar',
             sidebarContainer: '#sidebar',

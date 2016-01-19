@@ -29,5 +29,5 @@
  "ace.auto-padding.js" : false,
  "ace.auto-container.js" : false,
  
- "ace.onReady.js" : true
+ "ace.onReady.js" : false
 }
