@@ -2,39 +2,34 @@
  * home controller
  */
 define([
+    'backbone.marionette',
     'app/home/view',
-    'app/home/navbar',
-    'app/home/sidebar',
-    'app/home/container',
-    'app/home/footer',
     'app/ace.onReady'
-], function(View, NavbarView, SidebarView, ContainerView, FooterView, aceReady) {
-    var navbarView = new NavbarView().render();
-    var sidebarView = new SidebarView().render();
-    var containerView = new ContainerView().render();
-    var footerView = new FooterView().render();
+], function(Marionette, HomeView, AceReady) {
+    var aceReady = function(){
+        AceReady.basics();
+        AceReady.enableSidebar();
+        AceReady.handleScrollbars();
+        AceReady.dropdownAutoPos();
+        AceReady.navbarHelpers();
+        AceReady.bsCollapseToggle();
+        AceReady.sidebarTooltips();
+        AceReady.scrollTopBtn();
+        AceReady.someBrowserFix();
+        AceReady.smallDeviceDropdowns();
+    };
 
-    var homeView = new View().render();
-    var homeUI = homeView.ui;
-        homeUI.navbarContainer.append(navbarView.$el);
-        homeUI.sidebarContainer.append(sidebarView.$el);
-        homeUI.mainContainer.append(containerView.$el);
-        homeUI.footerContainer.append(footerView.$el);
-
-    return {
-        init: function(){
-            console.log("home page init.");
-            aceReady.basics();
-            aceReady.enableSidebar();
-            aceReady.handleScrollbars();
-            aceReady.dropdownAutoPos();
-            aceReady.navbarHelpers();
-            aceReady.bsCollapseToggle();
-            aceReady.sidebarTooltips();
-            aceReady.scrollTopBtn();
-            aceReady.someBrowserFix();
-            aceReady.smallDeviceDropdowns();
+    return Marionette.Object.extend({
+        initialize: function(options){
+            var data = this.data = options;
+            new HomeView(data).render();
+            aceReady();
+        },
+        graduate: function() {
+            console.log("ddddddddddddd");
+            //this.triggerMethod('ace:ready', aceReady);
         }
-    }
+    });
+
 
 });

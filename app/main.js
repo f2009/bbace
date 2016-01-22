@@ -1,5 +1,5 @@
 /**
- * require.main
+ * 应用入口
  */
 
 //移动终端资源
@@ -22,17 +22,17 @@ requirejs.config({
 
     //模块路径
     paths: {
-        <!--thirdParty:libs:start-->
+        <!--thirdparty:libs:start-->
         'json2': 'libs/json2',
         'jquery': 'assets/js/jquery1x',
         'underscore': 'libs/underscore-1.8.3',
-        <!--thirdParty:libs:end-->
+        <!--thirdparty:libs:end-->
 
-        <!--ace:framework:start-->
+        <!--thirdparty:ace:start-->
         'ace': 'assets/js/ace',
         'ace-elements': 'assets/js/ace-elements',
         'ace-extra': 'assets/js/ace-extra',
-        <!--ace:framework:end-->
+        <!--thirdparty:ace:end-->
 
         <!--ace:mvc:start-->
         'backbone': 'libs/backbone-1.2.1',
@@ -57,7 +57,6 @@ requirejs.config({
         'jquery.flot.pie': 'assets/js/flot/jquery.flot.pie',
         'jquery.flot.resize': 'assets/js/flot/jquery.flot.resize',
         <!--jquery:plugins:end-->
-
     },
 
     //配置模块加载顺序以及依赖关系
@@ -88,7 +87,15 @@ var console = window.console ? window.console : {
     error: function() {}
 };
 
-//开启App
-require(['app/home/ctrl'], function(home_ctrl){
-    home_ctrl.init();
+//声明全局对象
+var App;
+
+//初始化首页
+require([
+    'app/context',
+    'app/home/ctrl'
+], function(Ctx, HomeCtrl){
+    Ctx.load(function(data){
+        var homeCtrl = new HomeCtrl(data);
+    });
 });
