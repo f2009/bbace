@@ -19,7 +19,7 @@ define([
         return ret;
     }
 
-    return App.module('ctx', function(Self, App, Backbone, Marionette, $, _){
+    App.module('ctx', function(Self, App, Backbone, Marionette, $, _){
         Self.load = function(callback) {
             $.ajax({
                 type: 'GET',
@@ -36,4 +36,6 @@ define([
             return Permission.has(rsId, _permissionMap);
         };
     });
+
+    return App;
 });
