@@ -19,6 +19,7 @@
     ]
   },
   "auths": [
+    {"code": "*"},
     {"code": "system:test:c"},
     {"code": "system:test:r"},
     {"code": "system:test:u"},

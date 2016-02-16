@@ -13,21 +13,35 @@ define(function(){
     var TEST1 = {
         rsId: 'menu.query',
         iconCls: 'fa-desktop',
-        name: '综合查询',
+        name: '框架测试',
         items:[{
             rsId: 'menu.query1',
-            name: '查询一',
+            name: 'MVC',
             items:[{
                 rsId: 'menu.query1-1',
-                name: '手工记账',
-                iconCls: 'fa-leaf green',
+                name: 'Backbone',
+                iconCls: 'fa-leaf blue',
                 items: [
                     {
                         rsId: 'menu.query1-1-1',
+                        name: '模型(Model)',
+                        props: {
+                            trigger: 'mvc:backbone:model',
+                            deps: ['app/test_mvc/backbone/ctrl']
+                        }
+                    }
+                ]
+            },{
+                rsId: 'menu.query1-2',
+                name: 'AngularJS',
+                iconCls: 'fa-leaf red',
+                items: [
+                    {
+                        rsId: 'menu.query1-2-1',
                         name: 'xxx',
                         props: {
-                            trigger: 'manual:account:list',
-                            deps: ['app/account/manualAccount/list-view']
+                            trigger: '',
+                            deps: ['']
                         }
                     }
                 ]

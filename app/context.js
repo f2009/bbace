@@ -2,12 +2,8 @@
  * @class Context
  */
 define([
-    'backbone.marionette',
     'app/permission'
-], function(Marionette, Permission) {
-
-    var App = new Marionette.Application();
-
+], function(Permission) {
     var _permissionMap;
 
     function convert2PermissionMap (data) {
@@ -19,23 +15,23 @@ define([
         return ret;
     }
 
-    App.module('ctx', function(Self, App, Backbone, Marionette, $, _){
-        Self.load = function(callback) {
+    App.module('ctx', function(Ctx, App, Backbone, Marionette, $, _){
+        Ctx.load = function(callback) {
             $.ajax({
                 type: 'GET',
                 url: 'data/sysInfo.json',
                 dataType: 'json',
                 success: function(resp){
                     _permissionMap = convert2PermissionMap(resp);
-                    callback && callback.call(Self, resp);
+                    callback && callback.call(Ctx, resp);
                 }
             });
         };
 
-        Self.avail = function (rsId) {
+        Ctx.avail = function (rsId) {
             return Permission.has(rsId, _permissionMap);
         };
     });
 
-    return App;
+    return App.module('ctx');
 });

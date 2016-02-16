@@ -88,20 +88,18 @@ var console = window.console ? window.console : {
 };
 
 //声明全局对象
-var App;
-
 
 //初始化首页
-require([
+require(['app/app'], function(App){
+    App.start();
+});
+
+/*require([
     'app/context',
     'app/home/ctrl'
 ], function(Ctx, HomeCtrl){
-
-    var $body = $('body');
-    console.info($body);
-    
-    App = Ctx;
-    App.module('ctx').load(function(data){
+    //App = Ctx;
+    Ctx.load(function(data){
         var homeCtrl = new HomeCtrl(data);
     });
-});
+});*/

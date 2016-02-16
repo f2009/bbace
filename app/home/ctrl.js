@@ -24,10 +24,6 @@ define([
             var data = this.data = options;
             new HomeView(data).render();
             aceReady();
-        },
-        graduate: function() {
-            console.log("ddddddddddddd");
-            //this.triggerMethod('ace:ready', aceReady);
         }
     });
 
