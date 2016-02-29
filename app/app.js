@@ -15,11 +15,15 @@ define([
             var homeCtrl = new HomeCtrl(data);
 
             //regionManager.get('aRegion').show(new MyView, options);
-            App.regionManager = new Marionette.RegionManager({
+            var regionManager = App.regionManager = new Marionette.RegionManager({
                 regions: {
                     "container": ".page-container"
                 }
             });
+
+            App.show = function(view) {
+                regionManager.get('container').show(view);
+            };
 
         });
     });

@@ -7,7 +7,7 @@ define([
     var Controller = Marionette.Controller.extend({
         init: function(options){
             require(['app/test_mvc/backbone/view'], function(View){
-                App.regionManager.get('container').show(new View);
+                App.show(new View);
             })
         }
     });
