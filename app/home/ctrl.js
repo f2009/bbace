@@ -2,10 +2,9 @@
  * home controller
  */
 define([
-    'backbone.marionette',
     'app/home/view',
     'app/ace.onReady'
-], function(Marionette, HomeView, AceReady) {
+], function(HomeView, AceReady) {
     var aceReady = function(){
         AceReady.basics();
         AceReady.enableSidebar();

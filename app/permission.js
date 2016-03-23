@@ -24,13 +24,12 @@ define(['app/config'], function(Conf){
         },
 
         _has: function(rsId, pmsMap) {
-
+            //超级权限(*)直接返回
             if (pmsMap['*']) {
                 return true;
             }
 
-            // console.log('>>>permisson has rsId', rsId, 'pmsMap', pmsMap);
-
+            //判断权限码是否存在
             if (!rsId || !pmsMap) {
                 return false;
             }
@@ -39,18 +38,12 @@ define(['app/config'], function(Conf){
             var refs = rs[rsId] || [];
             var i, ln;
 
-            //TODO 如果有* 这样的超级权限，这句就出错，暂时在第一行hack一下
+            //是否配置关联菜单和对应权限
             if (!pms.length && !refs.length) {
                 return false;
             }
 
-            // for(i = 0, ln = pms.length; i < ln; i++) {
-            //     if(pmsMap[pms[i]]) {
-            //         return true;
-            //     }
-            // }
-
-            //TODO rewirte it with regexp
+            //权限过滤
             for (i = 0, ln = pms.length; i < ln; i++) {
                 var auth = pms[i];
                 var parts = auth.split(':');
@@ -71,7 +64,7 @@ define(['app/config'], function(Conf){
                 }
             }
 
-            //TODO dynamic add
+            //递归
             for (i = 0, ln = refs.length; i < ln; i++) {
                 if (this.has(refs[i], pmsMap)) {
                     return true;

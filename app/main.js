@@ -14,10 +14,13 @@ requirejs.config({
     //相对地址
     baseUrl: './',
 
+    //CDN地址
+    staticUrl: '//static.baidu.com/iboxpay',
+
     //预加载
     deps: [
-        'jquery', 'jquery.ui.touch-punch', 'jquery.bootstrap', 'jquery.ui',
-        'ace', 'ace-elements'
+        'jquery', 'jquery.ui', 'jquery.ui.touch-punch', 'jquery.bootstrap',
+        'ace', 'ace-elements', 'json2'
     ],
 
     //模块路径
@@ -74,8 +77,8 @@ requirejs.config({
         'jquery.flot.pie': ['jquery'],
         'jquery.flot.resize': ['jquery'],
 
-        'ace': ['jquery', 'jquery.bootstrap'],
-        'ace-elements': ['ace', 'jquery.ui']
+        'ace': ['jquery', 'jquery.bootstrap', 'jquery.ui'],
+        'ace-elements': ['ace']
     }
 });
 
@@ -87,19 +90,7 @@ var console = window.console ? window.console : {
     error: function() {}
 };
 
-//声明全局对象
-
 //初始化首页
 require(['app/app'], function(App){
-    App.start();
+    //App.start();
 });
-
-/*require([
-    'app/context',
-    'app/home/ctrl'
-], function(Ctx, HomeCtrl){
-    //App = Ctx;
-    Ctx.load(function(data){
-        var homeCtrl = new HomeCtrl(data);
-    });
-});*/
