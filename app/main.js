@@ -2,6 +2,14 @@
  * 应用入口
  */
 
+//处理IE调试信息
+var console = window.console ? window.console : {
+    log: function() {},
+    info: function() {},
+    warn: function() {},
+    error: function() {}
+};
+
 //移动终端资源
 /*var mobileResConfig = {};
 if('ontouchstart' in document.documentElement){
@@ -10,35 +18,48 @@ if('ontouchstart' in document.documentElement){
     mobileResConfig.shim['jquery.mobile'] = ['jquery'];
 }*/
 
+// CDN地址
+var staticUrl = 'http://apps.bdimg.com/';
+
+// 配置requirejs
 requirejs.config({
     //相对地址
     baseUrl: './',
 
-    //CDN地址
-    staticUrl: '//static.baidu.com/iboxpay',
-
     //预加载
     deps: [
         'jquery', 'jquery.ui', 'jquery.ui.touch-punch', 'jquery.bootstrap',
-        'ace', 'ace-elements', 'json2'
+        'ace', 'ace-elements', 'json2', 'backbone.marionette'
     ],
 
     //模块路径
     paths: {
+        <!--framework:properties:start-->
+        'menus': 'app_props/menus',
+        'routes': 'app_props/routes',
+        'permission': 'app_props/permission',
+        <!--framework:properties:end-->
+
         <!--thirdparty:libs:start-->
         'json2': 'libs/json2',
-        'jquery': 'assets/js/jquery1x',
+        //'jquery': 'http://cdn.bootcss.com/jquery/1.8.3/jquery.js', //'assets/js/jquery1x',
         'underscore': 'libs/underscore-1.8.3',
         <!--thirdparty:libs:end-->
+
+        'jquery': [
+            '//cdn.bootcss.com/jquery/1.12.1/jquery.min',
+            //If the CDN location fails, load from this location
+            'assets/js/jquery1x'
+        ],
 
         <!--thirdparty:ace:start-->
         'ace': 'assets/js/ace',
         'ace-elements': 'assets/js/ace-elements',
-        'ace-extra': 'assets/js/ace-extra',
+        //'ace-extra': 'assets/js/ace-extra',
         <!--thirdparty:ace:end-->
 
         <!--ace:mvc:start-->
-        'backbone': 'libs/backbone-1.2.1',
+        'backbone': staticUrl + 'libs/backbone.js/1.1.2/backbone-min', //'libs/backbone-1.2.1',
         'backbone.marionette': 'libs/backbone.marionette-2.4.1',
         'backbone.localStorage': 'libs/backbone.localStorage-1.1.0',
         <!--ace:mvc:end-->
@@ -79,18 +100,16 @@ requirejs.config({
 
         'ace': ['jquery', 'jquery.bootstrap', 'jquery.ui'],
         'ace-elements': ['ace']
+    },
+
+    callback: function() {
+        console.log("requirejs done!");
+
+        //初始化首页
+        require([
+            'app/app'
+        ], function(App){
+            App.start();
+        });
     }
-});
-
-//处理IE调试信息
-var console = window.console ? window.console : {
-    log: function() {},
-    info: function() {},
-    warn: function() {},
-    error: function() {}
-};
-
-//初始化首页
-require(['app/app'], function(App){
-    //App.start();
 });

@@ -3,10 +3,9 @@
  */
 define([
     'backbone.marionette',
-    'app/config',
+    'menus',
     'tpl!app/home/templates/menus.tpl'
-], function(Marionette, Conf, menusTpl) {
-    var menus = Conf.menus;
+], function(Marionette, menus, menusTpl) {
     var menusFn = _.template(menusTpl);
 
     return Marionette.ItemView.extend({

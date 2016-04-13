@@ -1,9 +1,62 @@
 /**
  * permission
  */
-define(['app/config'], function(Conf){
-    var rs = Conf.rs,
-        rs2pm = Conf.rs2pm;
+define(function() {
+
+    //子级菜单关联父菜单
+    var rs = {
+        'menu.query': [
+            'menu.query1',
+            'menu.query2',
+            'menu.query3'
+        ],
+
+        'menu.query1': [
+            'menu.query1-1'
+        ],
+
+        'menu.query1-1': [
+            'menu.query1-1-1'
+        ],
+
+        'menu.algo': [
+            'menu.algo1',
+            'menu.algo2',
+            'menu.algo3'
+        ],
+
+        'menu.algo1': [
+            'menu.algo1-1'
+        ]
+    };
+
+    //菜单权限
+    var rs2pm = {
+        'menu.query1-1-1': [
+            'system:test:c',
+            'system:test:r'
+        ],
+
+        'menu.query2': [
+            'system:test:s'
+        ],
+
+        'menu.query3': [
+            'system:test:s'
+        ],
+
+        'menu.algo1-1': [
+            'system:test:u'
+        ],
+
+        'menu.algo2': [
+            'system:test:s'
+        ],
+
+        'menu.algo3': [
+            'system:test:s'
+        ]
+    };
 
     var _filters = {
         //特殊菜单做拦截处理

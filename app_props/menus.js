@@ -1,14 +1,8 @@
 /**
- * config.js
- * rsId: 关联菜单权限的唯一标识
- * iconCls: fontawesome字体库图标(http://fontawesome.io/)
- * name: 菜单文字显示
- * props: 自定义菜单属性(用于扩展)
- * items: 子菜单
- * trigger: 事件标识
- * deps: 菜单关联的视图
+ * User hefeng
+ * Date 2016/4/12
  */
-define(function(){
+define(function() {
     //测试数据一
     var TEST1 = {
         rsId: 'menu.query',
@@ -25,9 +19,10 @@ define(function(){
                     {
                         rsId: 'menu.query1-1-1',
                         name: '模型(Model)',
+                        url: '#/test_mvc/backbone',
                         props: {
-                            trigger: 'mvc:backbone:model',
-                            deps: ['app/test_mvc/backbone/ctrl']
+                            //trigger: 'mvc:backbone:model',
+                            //deps: ['app/test_mvc/backbone/ctrl']
                         }
                     }
                 ]
@@ -38,17 +33,19 @@ define(function(){
                 items: [
                     {
                         rsId: 'menu.query1-2-1',
-                        name: 'xxx',
+                        name: '测试路由',
+                        url: '#/test_mvc/angularjs',
                         props: {
-                            trigger: '',
-                            deps: ['']
+                            //trigger: '',
+                            //deps: ['']
                         }
                     }
                 ]
             }]
         },{
             rsId: 'menu.query2',
-            name: '项目测试',
+            name: '测试跳转',
+            url: 'http://www.baidu.com',
             props: {
                 trigger: 'test:do',
                 deps: ['app/test/ctrl']
@@ -96,70 +93,5 @@ define(function(){
         }]
     };
 
-    //菜单
-    var menus = [
-        TEST1, TEST2
-    ];
-
-    //子级菜单关联父菜单
-    var rs = {
-        'menu.query': [
-            'menu.query1',
-            'menu.query2',
-            'menu.query3'
-        ],
-
-        'menu.query1': [
-            'menu.query1-1'
-        ],
-
-        'menu.query1-1': [
-            'menu.query1-1-1'
-        ],
-
-        'menu.algo': [
-            'menu.algo1',
-            'menu.algo2',
-            'menu.algo3'
-        ],
-
-        'menu.algo1': [
-            'menu.algo1-1'
-        ]
-    };
-
-    //菜单权限
-    var rs2pm = {
-        'menu.query1-1-1': [
-            'system:test:c',
-            'system:test:r'
-        ],
-
-        'menu.query2': [
-            'system:test:s'
-        ],
-
-        'menu.query3': [
-            'system:test:s'
-        ],
-
-        'menu.algo1-1': [
-            'system:test:u'
-        ],
-
-        'menu.algo2': [
-            'system:test:s'
-        ],
-
-        'menu.algo3': [
-            'system:test:s'
-        ]
-    };
-
-    return {
-        menus: menus,
-        rs2pm: rs2pm,
-        rs: rs
-    }
+    return [TEST1, TEST2];
 });
-
