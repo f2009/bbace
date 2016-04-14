@@ -12,7 +12,7 @@ define(function() {
             var routeTimeout = setTimeout(function() {
                 if(_.isFunction(App.show)) {
                     clearTimeout(routeTimeout);
-                    require(['app/'+path+'/view'], function(View) {
+                    require(['app/'+path+'/main'], function(View) {
                         App.show(new View);
                     });
                 }
