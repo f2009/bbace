@@ -2,21 +2,25 @@
  * 顶部工具条
  */
 define([
-    'backbone.marionette',
     'tpl!app/home/templates/navbar.tpl'
-], function(Marionette, navbarTpl) {
+], function(navbarTpl) {
+    var buildUserMsg = function(msgData) {
+        return new Backbone.Model(msgData);
+    };
 
     return Marionette.ItemView.extend({
         template: _.template(navbarTpl),
-        className: 'app-home-navbar',
-        initialize: function(options){
-            this.data = options;
+
+        className: 'app-navbar',
+
+        initialize: function(){
+            this._msgModel = buildUserMsg(Ctx.getUserMsg());
         },
+
         serializeData: function(){
-            return this.data;
-        },
-        onRender: function(){
-            console.log("navbar has been rendered!");
+            return {
+                user: Ctx.getUser()
+            };
         }
     })
 

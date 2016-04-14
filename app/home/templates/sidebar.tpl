@@ -30,7 +30,7 @@
 </div>
 
 <!-- 左侧菜单 -->
-<div id="sidebar-menus"></div>
+<div id="sidebar_menus"></div>
 
 <!-- 伸缩菜单 -->
 <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

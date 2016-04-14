@@ -47,8 +47,7 @@ requirejs.config({
         <!--thirdparty:libs:end-->
 
         'jquery': [
-            '//cdn.bootcss.com/jquery/1.12.1/jquery.min',
-            //If the CDN location fails, load from this location
+            '//cdn.bootcss.com/jquery/1.12.0/jquery',
             'assets/js/jquery1x'
         ],
 
@@ -102,14 +101,15 @@ requirejs.config({
         'ace-elements': ['ace']
     },
 
+    // requirejs回调
     callback: function() {
-        console.log("requirejs done!");
+        console.log("requirejs config done!");
 
-        //初始化首页
-        require([
-            'app/app'
-        ], function(App){
-            App.start();
-        });
+        // 启动项目
+        require(['app/app'],
+            function(App) {
+                App.start();
+            }
+        );
     }
 });

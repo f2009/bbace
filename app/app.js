@@ -5,34 +5,35 @@
  * App.ui
  */
 define([
-    'routes',
-    'app/home/ctrl',
-    'app/context'
-], function(Routes, HomeCtrl) {
+    'app/context',
+    'app/home/main',
+    'app/ace.onReady',
+    'routes'
+], function(Ctx, HomeMain, AceReady, Routes) {
 
     // 检测全局对象App是否存在
     // 防止多次声明
     if(typeof App === 'undefined') {
-        var App = window.App = new Marionette.Application();
+        var App = window.App = new Marionette.Application({
+            regions: {
+                "appContainer": "body>div.app-container"
+            }
+        });
     }
 
-    App._init = function(data) {
-        //require(['app/home/ctrl'], function(HomeCtrl){
-            var homeCtrl = new HomeCtrl(data);
+    // 显示视图
+    App.show = function(view) {
+        App.getRegion('mainContainer').show(view);
+    };
 
-            // regionManager
-            var regionManager = App.regionManager = new Marionette.RegionManager({
-                regions: {
-                    "container": ".page-container"
-                }
-            });
+    App._init = function() {
+        // 实例化home layout
+        var homeLayoutView = new HomeMain();
 
-            // 显示视图
-            App.show = function(view) {
-                regionManager.get('container').show(view);
-            };
+        App.addRegions(homeLayoutView.getRegions());
 
-        //});
+        // 生成首页视图
+        App.getRegion('appContainer').show(homeLayoutView);
     };
 
     var contextDeferred = Ctx._init(App._init);
@@ -43,7 +44,18 @@ define([
         // 初始化上下文
         contextDeferred.done(function() {
 
-            App.routes.navigate('#/index');
+            // App.routes.navigate('#/index');
+
+            AceReady.basics();
+            AceReady.enableSidebar();
+            AceReady.handleScrollbars();
+            AceReady.dropdownAutoPos();
+            AceReady.navbarHelpers();
+            AceReady.bsCollapseToggle();
+            AceReady.sidebarTooltips();
+            AceReady.scrollTopBtn();
+            AceReady.someBrowserFix();
+            AceReady.smallDeviceDropdowns();
 
             console.log("context done!");
         });
@@ -53,9 +65,6 @@ define([
 
         // 启用hash
         Backbone.history.start();
-
-        // 启动首个应用
-
 
         console.log("===================App start===================");
     });

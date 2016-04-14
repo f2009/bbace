@@ -17,12 +17,7 @@ define([
 
     // 建立用户模型
     var buildUserModel = function(userData) {
-        return new Backbone.Model({
-            defaults: userData,
-            getUserId: function() {
-                return this.defaults.id;
-            }
-        });
+        return new Backbone.Model(userData);
     };
 
     // 映射权限码
@@ -53,17 +48,24 @@ define([
     Ctx._init = function(callback) {
         var sysInfoDeferred = fetchSysInfo();
 
-        var _userInfo;
-
         sysInfoDeferred.done(function(resp) {
-            _userInfo = resp;
             _permissionMap = convert2PermissionMap(resp.auths);
             _userModel = buildUserModel(resp.user);
         });
 
         return $.when(sysInfoDeferred).done(function () {
-            callback && callback.call(Ctx, _userInfo);
+            callback && callback.call(Ctx);
         });
+    };
+
+    // 获取用户信息
+    Ctx.getUser = function() {
+        return _userModel.toJSON();
+    };
+
+    // 获取用户消息
+    Ctx.getUserMsg = function() {
+        return _userModel.get('message');
     };
 
     /**

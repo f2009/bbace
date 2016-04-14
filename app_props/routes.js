@@ -7,6 +7,8 @@ define(function() {
         routeTo: function(path) {
             console.log("route...", path);
 
+            if(!path) return;
+
             var routeTimeout = setTimeout(function() {
                 if(_.isFunction(App.show)) {
                     clearTimeout(routeTimeout);
@@ -20,10 +22,6 @@ define(function() {
 
         routeToIndex: function() {
             console.log("route to index");
-        },
-
-        testMVCangularjs: function() {
-            alert("testMVCangularjs");
         }
     };
 
