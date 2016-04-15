@@ -15,6 +15,15 @@ define([
     // 防止多次声明
     if(typeof App === 'undefined') {
         var App = window.App = new Marionette.Application({
+            /**
+             * regions object
+             * ==== region list ====
+             * appContainer[.app-container]
+             * navbarContainer[#navbar]
+             * sidebarContainer[#sidebar]
+             * mainContainer[#main]
+             * pageContainer[.page-content]
+             */
             regions: {
                 "appContainer": "body>div.app-container"
             }
@@ -23,7 +32,7 @@ define([
 
     // 显示视图
     App.show = function(view) {
-        App.getRegion('mainContainer').show(view);
+        App.getRegion('pageContainer').show(view);
     };
 
     App._init = function() {
@@ -34,18 +43,26 @@ define([
 
         // 生成首页视图
         App.getRegion('appContainer').show(homeLayoutView);
+
+        App.addRegions(homeLayoutView.contentLayoutView.getRegions());
     };
 
     var contextDeferred = Ctx._init(App._init);
 
     //app: start
     App.on('start', function() {
-
         // 初始化上下文
         contextDeferred.done(function() {
 
-            // App.routes.navigate('#/index');
+            // 默认跳转到index
+            // 如果刷新hash页面则不跳转
+            if(!window.location.hash) {
+                App.routes.navigate('#/index');
+            }
 
+            // Ace Ready
+            // 这里用的是第三方Ace开源框架
+            // 我们也可以配置自己的基础页面框架
             AceReady.basics();
             AceReady.enableSidebar();
             AceReady.handleScrollbars();

@@ -5,9 +5,9 @@ define([
     'tpl!app/home/templates/main.tpl',
     'app/home/navbar',
     'app/home/sidebar',
-    'app/home/container',
+    'app/home/content',
     'app/home/footer'
-], function(mainTpl, NavbarView, SidebarView, ContainerView, FooterView) {
+], function(mainTpl, NavbarView, SidebarView, ContentView, FooterView) {
 
     return Marionette.LayoutView.extend({
         template: _.template(mainTpl),
@@ -24,7 +24,7 @@ define([
         onRender: function(){
             this.showChildView('navbarContainer', new NavbarView());
             this.showChildView('sidebarContainer', new SidebarView());
-            this.showChildView('mainContainer', new ContainerView());
+            this.showChildView('mainContainer', this.contentLayoutView = new ContentView());
             this.showChildView('footerContainer', new FooterView());
 
             console.log("home layout done!");

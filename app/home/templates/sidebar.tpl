@@ -1,6 +1,6 @@
 <!-- 快捷导航 -->
 <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+    <!--<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
         <button class="btn btn-success">
             <i class="ace-icon fa fa-signal"></i>
         </button>
@@ -26,7 +26,18 @@
         <span class="btn btn-warning"></span>
 
         <span class="btn btn-danger"></span>
-    </div>
+    </div>-->
+
+    <!-- searchbox -->
+    <div class="nav-search" id="nav-search">
+        <form class="form-search">
+            <span class="input-icon">
+                <input type="text" placeholder="搜索菜单 ..." class="nav-search-input" id="nav-search-input" autocomplete="off" style="width:172px;" />
+                <i class="ace-icon fa fa-search nav-search-icon"></i>
+            </span>
+        </form>
+    </div><!-- /.nav-search -->
+
 </div>
 
 <!-- 左侧菜单 -->

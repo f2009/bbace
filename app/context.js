@@ -30,8 +30,10 @@ define([
         return ret;
     };
 
-    // Fetch数据
-    // 拉取系统初始化信息
+    /**
+     * Fetch 拉取系统初始化信息
+     * @returns {Object} jQuery Deferred对象
+     */
     var fetchSysInfo = function() {
         return $.ajax({
             type: 'GET',
@@ -42,8 +44,8 @@ define([
 
     /**
      * 初始化上下文
-     * @param callback
-     * @returns ajaxDefer
+     * @param {Function} callback
+     * @returns {Object} ajaxDefer
      */
     Ctx._init = function(callback) {
         var sysInfoDeferred = fetchSysInfo();
@@ -70,8 +72,8 @@ define([
 
     /**
      * 权限码校验
-     * @param rsId 权限码
-     * @returns Boolean
+     * @param {String} rsId 权限码
+     * @returns {Boolean} true/false
      */
     Ctx.avail = function (rsId) {
         return pmObj.has(rsId, _permissionMap);
