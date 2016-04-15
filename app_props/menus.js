@@ -19,11 +19,7 @@ define(function() {
                     {
                         rsId: 'menu.query1-1-1',
                         name: '模型(Model)',
-                        url: '#/test_mvc/backbone',
-                        props: {
-                            //trigger: 'mvc:backbone:model',
-                            //deps: ['app/test_mvc/backbone/ctrl']
-                        }
+                        url: '#/test_mvc/backbone'
                     }
                 ]
             },{
@@ -34,11 +30,7 @@ define(function() {
                     {
                         rsId: 'menu.query1-2-1',
                         name: '测试路由',
-                        url: '#/test_mvc/angularjs',
-                        props: {
-                            //trigger: '',
-                            //deps: ['']
-                        }
+                        url: '#/test_mvc/angularjs'
                     }
                 ]
             }]

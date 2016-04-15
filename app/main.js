@@ -10,14 +10,6 @@ var console = window.console ? window.console : {
     error: function() {}
 };
 
-//移动终端资源
-/*var mobileResConfig = {};
-if('ontouchstart' in document.documentElement){
-    mobileResConfig.paths['jquery'] = 'assets/js/jquery.js';
-    mobileResConfig.paths['jquery.mobile'] = 'assets/js/jquery.mobile.custom';
-    mobileResConfig.shim['jquery.mobile'] = ['jquery'];
-}*/
-
 // CDN地址
 var staticUrl = 'http://apps.bdimg.com/';
 
