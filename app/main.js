@@ -11,7 +11,8 @@ var console = window.console ? window.console : {
 };
 
 // CDN地址
-var staticUrl = 'http://apps.bdimg.com/';
+var CDN_URL = 'http://apps.bdimg.com/';
+var STATIC_URL = 'http://localhost.static/iboxpay/ace-1.3.3/';
 
 // 配置requirejs
 requirejs.config({
@@ -20,8 +21,8 @@ requirejs.config({
 
     //预加载
     deps: [
-        'jquery', 'jquery.ui', 'jquery.ui.touch-punch', 'jquery.bootstrap',
-        'ace', 'ace-elements', 'json2', 'backbone.marionette'
+        'jquery.ui', 'jquery.ui.touch-punch', 'jquery.bootstrap',
+        'json2', 'backbone.marionette', 'ace', 'ace-elements'
     ],
 
     //模块路径
@@ -34,23 +35,23 @@ requirejs.config({
 
         <!--thirdparty:libs:start-->
         'json2': 'libs/json2',
-        //'jquery': 'http://cdn.bootcss.com/jquery/1.8.3/jquery.js', //'assets/js/jquery1x',
+        //'jquery': 'http://cdn.bootcss.com/jquery/1.8.3/jquery.js', //STATIC_URL + 'assets/js/jquery1x',
         'underscore': 'libs/underscore-1.8.3',
         <!--thirdparty:libs:end-->
 
         'jquery': [
             '//cdn.bootcss.com/jquery/1.12.0/jquery',
-            'assets/js/jquery1x'
+            STATIC_URL + 'assets/js/jquery1x'
         ],
 
         <!--thirdparty:ace:start-->
-        'ace': 'assets/js/ace',
-        'ace-elements': 'assets/js/ace-elements',
-        //'ace-extra': 'assets/js/ace-extra',
+        'ace': STATIC_URL + 'assets/js/ace',
+        'ace-elements': STATIC_URL + 'assets/js/ace-elements',
+        //'ace-extra': STATIC_URL + 'assets/js/ace-extra',
         <!--thirdparty:ace:end-->
 
         <!--ace:mvc:start-->
-        'backbone': staticUrl + 'libs/backbone.js/1.1.2/backbone-min', //'libs/backbone-1.2.1',
+        'backbone': CDN_URL + 'libs/backbone.js/1.1.2/backbone-min', //'libs/backbone-1.2.1',
         'backbone.marionette': 'libs/backbone.marionette-2.4.1',
         'backbone.localStorage': 'libs/backbone.localStorage-1.1.0',
         <!--ace:mvc:end-->
@@ -63,14 +64,14 @@ requirejs.config({
         <!--requirejs:plugins:end-->
 
         <!--jquery:plugins:start-->
-        'jquery.ui': 'assets/js/jquery-ui.custom',
-        'jquery.ui.touch-punch': 'assets/js/jquery.ui.touch-punch',
-        'jquery.bootstrap': 'assets/js/bootstrap',
-        'jquery.easypiechart': 'assets/js/jquery.easypiechart',
-        'jquery.sparkline': 'assets/js/jquery.sparkline',
-        'jquery.flot': 'assets/js/flot/jquery.flot',
-        'jquery.flot.pie': 'assets/js/flot/jquery.flot.pie',
-        'jquery.flot.resize': 'assets/js/flot/jquery.flot.resize',
+        'jquery.ui': STATIC_URL + 'assets/js/jquery-ui.custom',
+        'jquery.ui.touch-punch': STATIC_URL + 'assets/js/jquery.ui.touch-punch',
+        'jquery.bootstrap': STATIC_URL + 'assets/js/bootstrap',
+        'jquery.easypiechart': STATIC_URL + 'assets/js/jquery.easypiechart',
+        'jquery.sparkline': STATIC_URL + 'assets/js/jquery.sparkline',
+        'jquery.flot': STATIC_URL + 'assets/js/flot/jquery.flot',
+        'jquery.flot.pie': STATIC_URL + 'assets/js/flot/jquery.flot.pie',
+        'jquery.flot.resize': STATIC_URL + 'assets/js/flot/jquery.flot.resize',
         <!--jquery:plugins:end-->
     },
 
@@ -81,7 +82,7 @@ requirejs.config({
         'backbone.localStorage': ['backbone'],
 
         'jquery.ui': ['jquery'],
-        'jquery.ui.touch-punch': ['jquery'],
+        'jquery.ui.touch-punch': ['jquery.ui'],
         'jquery.bootstrap': ['jquery'],
         'jquery.easypiechart': ['jquery'],
         'jquery.sparkline': ['jquery'],
@@ -89,7 +90,7 @@ requirejs.config({
         'jquery.flot.pie': ['jquery'],
         'jquery.flot.resize': ['jquery'],
 
-        'ace': ['jquery', 'jquery.bootstrap', 'jquery.ui'],
+        'ace': ['jquery.bootstrap', 'jquery.ui'],
         'ace-elements': ['ace']
     },
 
