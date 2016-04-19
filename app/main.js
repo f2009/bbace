@@ -14,9 +14,8 @@ var console = window.console ? window.console : {
 // 第三方开源插件
 var CDN_URL = 'http://apps.bdimg.com/';
 
-// 静态资源地址
-// 框架资源以及相关依赖
-var STATIC_URL = 'vendor/ace-1.3.3/';
+// 框架URL
+var FWK_URL = 'vendor/ace-1.3.3/assets/';
 
 // 配置requirejs
 requirejs.config({
@@ -39,23 +38,25 @@ requirejs.config({
 
         <!--thirdparty:libs:start-->
         'json2': 'libs/json2',
-        //'jquery': 'http://cdn.bootcss.com/jquery/1.8.3/jquery.js', //STATIC_URL + 'assets/js/jquery1x',
         'underscore': 'libs/underscore-1.8.3',
         <!--thirdparty:libs:end-->
 
         'jquery': [
             '//cdn.bootcss.com/jquery/1.12.0/jquery',
-            STATIC_URL + 'assets/js/jquery1x'
+            FWK_URL + 'js/jquery1x'
         ],
 
         <!--thirdparty:ace:start-->
-        'ace': STATIC_URL + 'assets/js/ace',
-        'ace-elements': STATIC_URL + 'assets/js/ace-elements',
-        //'ace-extra': STATIC_URL + 'assets/js/ace-extra',
+        'ace': FWK_URL + 'js/ace',
+        'ace-elements': FWK_URL + 'js/ace-elements',
+        //'ace-extra': FWK_URL + 'js/ace-extra',
         <!--thirdparty:ace:end-->
 
         <!--ace:mvc:start-->
-        'backbone': CDN_URL + 'libs/backbone.js/1.1.2/backbone-min', //'libs/backbone-1.2.1',
+        'backbone': [
+            CDN_URL + 'libs/backbone.js/1.1.2/backbone',
+            'libs/backbone-1.2.1'
+        ],
         'backbone.marionette': 'libs/backbone.marionette-2.4.1',
         'backbone.localStorage': 'libs/backbone.localStorage-1.1.0',
         <!--ace:mvc:end-->
@@ -68,14 +69,14 @@ requirejs.config({
         <!--requirejs:plugins:end-->
 
         <!--jquery:plugins:start-->
-        'jquery.ui': STATIC_URL + 'assets/js/jquery-ui.custom',
-        'jquery.ui.touch-punch': STATIC_URL + 'assets/js/jquery.ui.touch-punch',
-        'jquery.bootstrap': STATIC_URL + 'assets/js/bootstrap',
-        'jquery.easypiechart': STATIC_URL + 'assets/js/jquery.easypiechart',
-        'jquery.sparkline': STATIC_URL + 'assets/js/jquery.sparkline',
-        'jquery.flot': STATIC_URL + 'assets/js/flot/jquery.flot',
-        'jquery.flot.pie': STATIC_URL + 'assets/js/flot/jquery.flot.pie',
-        'jquery.flot.resize': STATIC_URL + 'assets/js/flot/jquery.flot.resize',
+        'jquery.ui': FWK_URL + 'js/jquery-ui.custom',
+        'jquery.ui.touch-punch': FWK_URL + 'js/jquery.ui.touch-punch',
+        'jquery.bootstrap': FWK_URL + 'js/bootstrap',
+        'jquery.easypiechart': FWK_URL + 'js/jquery.easypiechart',
+        'jquery.sparkline': FWK_URL + 'js/jquery.sparkline',
+        'jquery.flot': FWK_URL + 'js/flot/jquery.flot',
+        'jquery.flot.pie': FWK_URL + 'js/flot/jquery.flot.pie',
+        'jquery.flot.resize': FWK_URL + 'js/flot/jquery.flot.resize',
         <!--jquery:plugins:end-->
     },
 
