@@ -7,8 +7,7 @@
 define([
     'app/context',
     'app/home/main',
-    'app/ace.onReady',
-    'routes'
+    'ace.onReady', 'routes'
 ], function(Ctx, HomeMain, AceReady, Routes) {
 
     // 检测全局对象App是否存在
@@ -67,8 +66,8 @@ define([
             AceReady.enableSidebar();
             AceReady.handleScrollbars();
             AceReady.dropdownAutoPos();
-            AceReady.navbarHelpers();
-            AceReady.bsCollapseToggle();
+            //AceReady.navbarHelpers();
+            //AceReady.bsCollapseToggle();
             AceReady.sidebarTooltips();
             AceReady.scrollTopBtn();
             AceReady.someBrowserFix();

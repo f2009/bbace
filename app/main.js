@@ -16,7 +16,7 @@ var CDN_URL = 'http://apps.bdimg.com/';
 
 // 静态资源地址
 // 框架资源以及相关依赖
-var STATIC_URL = 'http://localhost.static/iboxpay/ace-v1.3.3/';
+var STATIC_URL = 'vendor/ace-1.3.3/';
 
 // 配置requirejs
 requirejs.config({
