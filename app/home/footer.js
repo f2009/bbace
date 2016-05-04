@@ -8,10 +8,8 @@ define([
 
     return Marionette.ItemView.extend({
         template: _.template(footerTpl),
-        className: 'app-home-footer',
-        onRender: function(){
-            console.log("footer has been rendered!");
-        }
+
+        className: 'app-footer'
     })
 
 });

@@ -2,43 +2,61 @@
  * 应用入口
  */
 
-//移动终端资源
-/*var mobileResConfig = {};
-if('ontouchstart' in document.documentElement){
-    mobileResConfig.paths['jquery'] = 'assets/js/jquery.js';
-    mobileResConfig.paths['jquery.mobile'] = 'assets/js/jquery.mobile.custom';
-    mobileResConfig.shim['jquery.mobile'] = ['jquery'];
-}*/
+//处理IE调试信息
+var console = window.console ? window.console : {
+    log: function() {},
+    info: function() {},
+    warn: function() {},
+    error: function() {}
+};
 
+// CDN地址
+// 第三方开源插件
+var CDN_URL = 'http://apps.bdimg.com/';
+
+// 框架URL
+var FWK_URL = 'vendor/ace-1.3.3/assets/';
+
+// 配置requirejs
 requirejs.config({
     //相对地址
     baseUrl: './',
 
-    //CDN地址
-    staticUrl: '//static.baidu.com/iboxpay',
-
     //预加载
     deps: [
-        'jquery', 'jquery.ui', 'jquery.ui.touch-punch', 'jquery.bootstrap',
-        'ace', 'ace-elements', 'json2'
+        'jquery.ui', 'jquery.ui.touch-punch', 'jquery.bootstrap',
+        'json2', 'backbone.marionette', 'ace', 'ace-elements'
     ],
 
     //模块路径
     paths: {
+        <!--framework:properties:start-->
+        'menus': 'app_props/menus',
+        'routes': 'app_props/routes',
+        'permission': 'app_props/permission',
+        <!--framework:properties:end-->
+
         <!--thirdparty:libs:start-->
         'json2': 'libs/json2',
-        'jquery': 'assets/js/jquery1x',
         'underscore': 'libs/underscore-1.8.3',
         <!--thirdparty:libs:end-->
 
+        'jquery': [
+            '//cdn.bootcss.com/jquery/1.12.0/jquery',
+            FWK_URL + 'js/jquery1x'
+        ],
+
         <!--thirdparty:ace:start-->
-        'ace': 'assets/js/ace',
-        'ace-elements': 'assets/js/ace-elements',
-        'ace-extra': 'assets/js/ace-extra',
+        'ace': FWK_URL + 'js/ace',
+        'ace-elements': FWK_URL + 'js/ace-elements',
+        //'ace-extra': FWK_URL + 'js/ace-extra',
         <!--thirdparty:ace:end-->
 
         <!--ace:mvc:start-->
-        'backbone': 'libs/backbone-1.2.1',
+        'backbone': [
+            CDN_URL + 'libs/backbone.js/1.1.2/backbone',
+            'libs/backbone-1.2.1'
+        ],
         'backbone.marionette': 'libs/backbone.marionette-2.4.1',
         'backbone.localStorage': 'libs/backbone.localStorage-1.1.0',
         <!--ace:mvc:end-->
@@ -51,14 +69,14 @@ requirejs.config({
         <!--requirejs:plugins:end-->
 
         <!--jquery:plugins:start-->
-        'jquery.ui': 'assets/js/jquery-ui.custom',
-        'jquery.ui.touch-punch': 'assets/js/jquery.ui.touch-punch',
-        'jquery.bootstrap': 'assets/js/bootstrap',
-        'jquery.easypiechart': 'assets/js/jquery.easypiechart',
-        'jquery.sparkline': 'assets/js/jquery.sparkline',
-        'jquery.flot': 'assets/js/flot/jquery.flot',
-        'jquery.flot.pie': 'assets/js/flot/jquery.flot.pie',
-        'jquery.flot.resize': 'assets/js/flot/jquery.flot.resize',
+        'jquery.ui': FWK_URL + 'js/jquery-ui.custom',
+        'jquery.ui.touch-punch': FWK_URL + 'js/jquery.ui.touch-punch',
+        'jquery.bootstrap': FWK_URL + 'js/bootstrap',
+        'jquery.easypiechart': FWK_URL + 'js/jquery.easypiechart',
+        'jquery.sparkline': FWK_URL + 'js/jquery.sparkline',
+        'jquery.flot': FWK_URL + 'js/flot/jquery.flot',
+        'jquery.flot.pie': FWK_URL + 'js/flot/jquery.flot.pie',
+        'jquery.flot.resize': FWK_URL + 'js/flot/jquery.flot.resize',
         <!--jquery:plugins:end-->
     },
 
@@ -69,7 +87,7 @@ requirejs.config({
         'backbone.localStorage': ['backbone'],
 
         'jquery.ui': ['jquery'],
-        'jquery.ui.touch-punch': ['jquery'],
+        'jquery.ui.touch-punch': ['jquery.ui'],
         'jquery.bootstrap': ['jquery'],
         'jquery.easypiechart': ['jquery'],
         'jquery.sparkline': ['jquery'],
@@ -77,20 +95,19 @@ requirejs.config({
         'jquery.flot.pie': ['jquery'],
         'jquery.flot.resize': ['jquery'],
 
-        'ace': ['jquery', 'jquery.bootstrap', 'jquery.ui'],
+        'ace': ['jquery.bootstrap', 'jquery.ui'],
         'ace-elements': ['ace']
+    },
+
+    // requirejs回调
+    callback: function() {
+        console.log("requirejs config done!");
+
+        // 启动项目
+        require(['app/app'],
+            function(App) {
+                App.start();
+            }
+        );
     }
-});
-
-//处理IE调试信息
-var console = window.console ? window.console : {
-    log: function() {},
-    info: function() {},
-    warn: function() {},
-    error: function() {}
-};
-
-//初始化首页
-require(['app/app'], function(App){
-    //App.start();
 });

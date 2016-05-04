@@ -1,6 +1,6 @@
 <!-- 快捷导航 -->
-<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+<div class="sidebar-shortcuts" id="sidebar_shortcuts">
+    <!--<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
         <button class="btn btn-success">
             <i class="ace-icon fa fa-signal"></i>
         </button>
@@ -26,13 +26,17 @@
         <span class="btn btn-warning"></span>
 
         <span class="btn btn-danger"></span>
-    </div>
+    </div>-->
+
+    <!-- searchbox -->
+    <div class="nav-search" id="nav_search"></div><!-- /.nav-search -->
+
 </div>
 
 <!-- 左侧菜单 -->
-<div id="sidebar-menus"></div>
+<div id="sidebar_menus"></div>
 
 <!-- 伸缩菜单 -->
-<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+<div class="sidebar-toggle sidebar-collapse" id="sidebar_collapse">
     <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 </div>
