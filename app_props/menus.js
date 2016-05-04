@@ -3,7 +3,11 @@
  * Date 2016/4/12
  */
 define(function() {
-
+    /**
+     * page: 模块标识
+     * link: 相对于app的文件夹路径
+     * view: 需要展示的视图，如果默认是main则可不写
+     */
     return [
         //测试数据一
         {
@@ -21,7 +25,7 @@ define(function() {
                         {
                             rsId: 'menu.query1-1-1',
                             name: '模型(Model)',
-                            url: '#/page?link=test_mvc/backbone'
+                            url: '#/page?link=test_mvc-backbone'
                         }
                     ]
                 },{
@@ -32,7 +36,7 @@ define(function() {
                         {
                             rsId: 'menu.query1-2-1',
                             name: '测试路由',
-                            url: '#/page?link=test_mvc/angularjs'
+                            url: '#/page?link=test_mvc-angularjs'
                         }
                     ]
                 }]
@@ -47,7 +51,7 @@ define(function() {
             },{
                 rsId: 'menu.query3',
                 name: '异常处理',
-                url: '#/page?link=test&view=view' ///test/view
+                url: '#/page?link=test&view=view'
             }]
         },
 

@@ -14,7 +14,7 @@ define(function() {
          * @param {String} action 执行的动作
          */
         routeToPage: function(path, view, action) {
-            console.log("route...", path, view, action);
+            // console.log("route...", path, view, action);
 
             // 检测是否是一个有效的路径
             if(!path) return;
@@ -22,10 +22,10 @@ define(function() {
             // 解析path
             path = path.replace(/-/g, '/');
 
-            path = view? 'app/'+path+'/'+view : 'app/'+path+'/main';
-
             // 默认加载main.js
             // 如果不存在的话则直接加载path地址
+            path = 'app/'+path+'/'+(view||'main');
+
             require([path], function(View) {
                 App.show(new View);
             });
@@ -46,13 +46,31 @@ define(function() {
 
     var routerCtrl = new RouterCtrl;
 
+    var parseQueryString = function(path) {
+        var pathArr = path.split('&');
+        var pathObjArr = [];
+
+        for(var i=0; i<pathArr.length; i++) {
+            var _path = pathArr[i];
+            var _pathArr = _path.split('=');
+            var obj = {
+                key: _pathArr[0],
+                value: _pathArr[1]
+            };
+
+            pathObjArr.push(obj);
+            pathArr[i] = obj.value;
+        }
+
+        return pathArr;
+    };
+
     return Marionette.AppRouter.extend({
         // Backbone原始方法
         execute: function(callback, args) {
-            /*args.push(parseQueryString(args.pop()));*/
-            if (callback) callback.apply(this, args);
-
-            console.log("Router execute:", callback, args);
+            if (callback) {
+                callback.apply(this, parseQueryString(args[0]));
+            }
         },
 
         // 路由方法
@@ -62,7 +80,7 @@ define(function() {
         appRoutes: {
             'index': 'routeToIndex', // 匹配默认首页
             //'page/:path(/:view)(/:action)': 'routeToPage' // 匹配菜单页面
-            'page?link=:path&view=:view': 'routeToPage' // 匹配菜单页面 )(&action=:action)
+            'page?*path': 'routeToPage' // 匹配菜单页面 )(&action=:action)
         },
 
         // Backbone路由
@@ -70,8 +88,7 @@ define(function() {
 
         // 监听路由
         onRoute: function(routeMethod, routePath, routeParams) {
-            console.log("on route:", routeMethod, routePath, routeParams);
-
+            // console.log("on route:", routeMethod, routePath, routeParams);
         }
     });
 
