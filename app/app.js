@@ -56,7 +56,7 @@ define([
             // 默认跳转到index
             // 如果刷新hash页面则不跳转
             if(!window.location.hash) {
-                App.routes.navigate('#/index');
+                App.routes.navigate('#home');
             }
 
             // Ace Ready

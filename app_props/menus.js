@@ -25,7 +25,7 @@ define(function() {
                         {
                             rsId: 'menu.query1-1-1',
                             name: '模型(Model)',
-                            url: '#/page?link=test_mvc-backbone'
+                            url: '#page?link=test_mvc-backbone'
                         }
                     ]
                 },{
@@ -36,7 +36,7 @@ define(function() {
                         {
                             rsId: 'menu.query1-2-1',
                             name: '测试路由',
-                            url: '#/page?link=test_mvc-angularjs'
+                            url: '#page?link=test_mvc-angularjs'
                         }
                     ]
                 }]
@@ -51,7 +51,7 @@ define(function() {
             },{
                 rsId: 'menu.query3',
                 name: '异常处理',
-                url: '#/page?link=test&view=view'
+                url: '#page?link=test&view=view'
             }]
         },
 
