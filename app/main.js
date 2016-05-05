@@ -85,8 +85,6 @@ requirejs.config({
 
     //配置模块加载顺序以及依赖关系
     shim: {
-        //'i18n': ['i18n.origin'],
-
         'backbone': ['underscore', 'jquery'],
         'backbone.marionette': ['backbone'],
         'backbone.localStorage': ['backbone'],
