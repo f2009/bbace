@@ -6,6 +6,8 @@ define([
         template: _.template(pageTpl),
         className: 'app-test-page-angularjs',
 
+        tabId: 'menu.query.mvc.angularjs',
+
         ui: {
             changeColor: '#test_change_color',
             pageContainer: '#test_page_container',

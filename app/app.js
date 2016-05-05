@@ -7,8 +7,9 @@
 define([
     'app/context',
     'app/home/main',
+    'app/home/tab',
     'ace.onReady'
-], function(Ctx, HomeMain, AceReady) {
+], function(Ctx, HomeMain, TabView, AceReady) {
 
     // 检测全局对象App是否存在
     // 防止多次声明
@@ -29,9 +30,35 @@ define([
         });
     }
 
+    var contentView = new TabView();
+
     // 显示视图
     App.show = function(view) {
-        App.getRegion('pageContainer').show(view);
+        document.body.scrollTop=0;
+        contentView.addTabContent(view);
+    };
+
+    App.canRepeatShow = function (view, options) {
+        document.body.scrollTop=0;
+        return contentView.addTabContentCanRepeat(view, options);
+    };
+
+    App.closeTabViewById = function (id) {
+        document.body.scrollTop=0;
+        contentView.closeTabViewById(id);
+    };
+
+    App.maskCurTab = function () {
+        //Opf.UI.setLoading('#page-body');
+    };
+
+    App.getCurTabPaneEl = function () {
+        // return $('#page-body');
+        return contentView.getNowActiveTab();
+    };
+
+    App.unMaskCurTab = function () {
+        //Opf.UI.setLoading('#page-body', false);
     };
 
     App._init = function() {
@@ -43,7 +70,11 @@ define([
         // 生成首页视图
         App.getRegion('appContainer').show(homeLayoutView);
 
+        // 返回contentLayout
         App.addRegions(homeLayoutView.contentLayoutView.getRegions());
+
+        // 生成TAB视图
+        App.getRegion('pageContainer').show(contentView);
     };
 
     var contextDeferred = Ctx._init(App._init);

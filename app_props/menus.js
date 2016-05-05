@@ -2,7 +2,7 @@
  * User hefeng
  * Date 2016/4/12
  */
-define(function() {
+define(['i18n!app_props/nls/text'], function(i18nText) {
     /**
      * 菜单配置
      * rsId: 权限过滤唯一标识
@@ -29,7 +29,7 @@ define(function() {
                             items: [
                                 {
                                     rsId: 'menu.query1-1-1',
-                                    name: 'Backbone(Model)',
+                                    name: i18nText._('menu.query.mvc.backbone'),
                                     props: {
                                         trigger: 'test:mvc:backbone',
                                         deps: 'app/test_mvc/backbone/main'
@@ -44,7 +44,7 @@ define(function() {
                             items: [
                                 {
                                     rsId: 'menu.query1-2-1',
-                                    name: 'angularJS模型',
+                                    name: i18nText._('menu.query.mvc.angularjs'),
                                     props: {
                                         trigger: 'test:mvc:angularjs',
                                         deps: 'app/test_mvc/angularjs/main'
@@ -55,14 +55,14 @@ define(function() {
                     ]
                 },{
                     rsId: 'menu.query2',
-                    name: '项目测试',
+                    name: i18nText._('menu.query2'),
                     props: {
                         trigger: 'test:do',
                         deps: 'app/test/ctrl'
                     }
                 },{
                     rsId: 'menu.query3',
-                    name: '异常处理',
+                    name: i18nText._('menu.query3'),
                     props: {
                         trigger: 'exceptions:list',
                         deps: 'app/account/exceptions/list-view'

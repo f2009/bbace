@@ -5,6 +5,7 @@ define([
     return Marionette.ItemView.extend({
         template: _.template(pageTpl),
         className: 'app-test-page-backbone',
+        tabId: 'menu.query.mvc.backbone',
         ui: {
             changeColor: '#test_change_color',
             pageContainer: '#test_page_container',

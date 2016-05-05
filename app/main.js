@@ -62,9 +62,7 @@ requirejs.config({
         <!--ace:mvc:end-->
 
         <!--requirejs:plugins:start-->
-        'domReady': 'libs/require.domReady-2.0.1',
         'tpl': 'libs/require.text-2.0.14',
-        'i18n': 'libs/require.i18n-2.0.6',
         'cs': 'libs/require.cs-0.5.0', //CoffeeScript
         <!--requirejs:plugins:end-->
 
@@ -78,10 +76,17 @@ requirejs.config({
         'jquery.flot.pie': FWK_URL + 'js/flot/jquery.flot.pie',
         'jquery.flot.resize': FWK_URL + 'js/flot/jquery.flot.resize',
         <!--jquery:plugins:end-->
+
+        //plugins:extend:start
+        'i18n': 'app_res/js/i18n.extend',
+        'i18n.origin': 'libs/require.i18n-2.0.6',
+        <!--plugins:extend:end-->
     },
 
     //配置模块加载顺序以及依赖关系
     shim: {
+        //'i18n': ['i18n.origin'],
+
         'backbone': ['underscore', 'jquery'],
         'backbone.marionette': ['backbone'],
         'backbone.localStorage': ['backbone'],
@@ -97,6 +102,12 @@ requirejs.config({
 
         'ace': ['jquery.bootstrap', 'jquery.ui'],
         'ace-elements': ['ace']
+    },
+
+    config: {
+        i18n: {
+            locale: 'zh-CN'
+        }
     },
 
     // requirejs回调
